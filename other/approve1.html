@@ -1,0 +1,616 @@
+<html>
+<style>
+	h1 { 
+		font-family: 'Mitr';
+		font-size: 64px;
+		color: #000;
+	}
+	h2 { 
+		font-family: 'Mitr';
+		font-size: 20px;
+		color: #767676;
+	}
+	body, div, form, p { 
+		padding: 0;
+		margin: 0;
+		font-family: 'Mitr';
+		font-size: 18px;
+		color: #000;
+	}
+	.center {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	.custom-select {
+		position: relative;
+		font-family: Arial;
+	}
+	.custom-select select {
+		display: none;
+	}
+	.select-selected {
+		background-color: DodgerBlue;
+	}
+	p.head{
+		font-family: 'Mitr';
+		font-size: 17px;
+		color: #1a1a1a;
+	}
+	div.box0 {
+		margin-right: auto;
+		background-color: #FBFBFB;
+	}
+	div.box1 {
+		text-indent: 32%;
+		border-radius: 25px;
+		margin: auto;
+		width: 800px;
+		padding: 50px;
+	}
+	div.box2 {
+		text-indent: 34%;
+		border-radius: 25px;
+		margin: auto;
+		width: 88%;
+		padding: 15px;
+	}
+	div.box1, div.box2 {
+		background-color: #FBFBFB;
+	}
+	div.a {
+		margin-left: 55%;
+	}
+	div.b {
+		margin-left: -35%;
+	}
+	div.c {
+		margin-left: -30%;
+	}
+	table, th, td {
+		text-align: center;
+		border-collapse: collapse;
+	}
+	table.head, th.head {
+		width: 30%;
+		background-color: #FBFBFB;
+	}
+	select, input {
+		border-style: solid;
+		border-color: #767676;
+		border-width: 1px;
+		border-radius: 5px;
+		font-family: 'Mitr';
+		font-size: 16px;
+	}
+	textarea {
+		font-family: 'Mitr';
+		font-size: 16px;
+		color: #000;
+		width: 700px;
+		height: 100px;
+		resize: none;
+	}
+	input.displaycount{
+		margin: auto;
+		background: #FBFBFB;
+		border-style: solid;
+		border-color: #FBFBFB;
+	}
+	input.addcountsubject{
+		margin: auto;
+		background: #6bc76b;
+		color: white;
+		border-style: solid;
+		border-color: #FBFBFB;
+		border-radius: 25px;
+		height: 35px;
+		width: 35px;
+		font-family: 'Mitr';
+		font-size: 18px;
+	}
+	input.remcountsubject{
+		margin: auto;
+		background: #c76b6b;
+		color: white;
+		border-style: solid;
+		border-color: #FBFBFB;
+		border-radius: 25px;
+		height: 35px;
+		width: 35px;
+		font-family: 'Mitr';
+		font-size: 18px;
+	}
+	button.agree {
+
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		background: #4CAF50;
+		color: white;
+		border-style: outset;
+		border-color: #fff;
+		height: 50px;
+		width: 200px;
+		border-radius: 8px;
+		font-family: 'Mitr';
+		font-size: 24px;
+		text-shadow: none;
+	}
+	button.reject {
+
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		background: red;
+		color: white;
+		border-style: outset;
+		border-color: #fff;
+		height: 50px;
+		width: 200px;
+		border-radius: 8px;
+		font-family: 'Mitr';
+		font-size: 24px;
+		text-shadow: none;
+	}
+	button.agree:hover{
+		animation: spring 300ms ease-out;
+	}
+	button.reject:hover{
+		animation: spring 300ms ease-out;
+	}
+	button.submit:hover 
+	{animation: spring 300ms ease-out;}
+	.navbar {
+		overflow: hidden;
+		background-color: #333;
+	}
+
+	.navbar a {
+		float: left;
+		font-size: 16px;
+		color: white;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none;
+	}
+
+	.dropdown {
+		float: left;
+		overflow: hidden;
+	}
+
+	.dropdown .dropbtn {
+		font-size: 16px;  
+		border: none;
+		outline: none;
+		color: white;
+		padding: 14px 16px;
+		background-color: inherit;
+		font-family: inherit;
+		margin: 0;
+	}
+
+	.navbar a:hover, .dropdown:hover .dropbtn {
+		background-color: red;
+	}
+
+	.dropdown-content {
+		display: none;
+		position: absolute;
+		background-color: #f9f9f9;
+		min-width: 160px;
+		box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+		z-index: 1;
+	}
+	input[type=submit] {
+		animation: spring 300ms ease-out;
+		font-size: 20px;
+		width: 30%;
+		background-color: #4CAF50;
+		color: white;
+		padding: 14px 60px;
+
+		display: block;
+		border: none;
+		border-radius: 16px;
+		cursor: pointer;
+		text-align: center;
+	}
+	input[type=text],textarea {
+		
+	}
+	.dropdown-content a {
+		float: none;
+		color: black;
+		padding: 12px 16px;
+		text-decoration: none;
+		display: block;
+		text-align: left;
+	}
+
+	.dropdown-content a:hover {
+		background-color: #ddd;
+	}
+
+	.dropdown:hover .dropdown-content {
+		display: block;
+	}
+	input:hover,input:focus{
+		color: #888;
+		transition: 0.4s;
+		background: #ECE8E8;
+
+	}
+	.pill-nav a {
+		display: inline-block;
+		color: black;
+		text-align: center;
+		padding: 14px;
+		text-decoration: none;
+		font-size: 17px;
+		border-radius: 5px;
+	}
+
+	.pill-nav a:hover {
+		background-color: #ddd;
+		color: black;
+	}
+
+	.pill-nav a.active {
+		background-color: dodgerblue;
+		color: white;
+	}
+	ul{
+		display: flex;
+		width: 100%;
+
+		margin: auto;
+		max-width: 1000px;
+		justify-content: space-between;
+		text-align: center;
+	}
+	.buttonMain{
+		padding: 1rem 2rem 1.15rem;
+		text-transform: uppercase;
+		cursor: pointer;
+		color: black;
+		min-width: 80px;
+		margin: auto;
+		text-shadow: 0 -1px 0 grey;
+		background-color: #D47A72;
+		border-radius: 25px;
+	}
+
+	.buttonMain:hover {
+		/*  background-image: url('https://scottyzen.sirv.com/Images/v/button.png'); */
+		background-color: #F0E5DC;
+		border-radius: 25px;
+		background-size: 100% 100%;
+		color: #27262c;
+		animation: spring 300ms ease-out;
+
+		font-weight: bold;
+	}
+	.buttonMain:active {
+		transform: translateY(4px);
+	}
+
+	@keyframes spring {
+		15% {
+			-webkit-transform-origin: center center;
+			-webkit-transform: scale(1.2, 1.1);
+		}
+		40% {
+			-webkit-transform-origin: center center;
+			-webkit-transform: scale(0.95, 0.95);
+		}
+		75% {
+			-webkit-transform-origin: center center;
+			-webkit-transform: scale(1.05, 1);
+		}
+		100% {
+			-webkit-transform-origin: center center;
+			-webkit-transform: scale(1, 1);
+		}
+	}
+	.noselect {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	br {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+</style>
+<head>
+	<script src="/js/angular.min.js"></script>
+	<link href='https://fonts.googleapis.com/css?family=Mitr' rel='stylesheet'>
+	<title>คำร้องขอเพิ่มถอนรายวิชา</title>
+	<link rel="icon" type="image/x-icon" href="/pictures/Thammasat.ico">
+</head>
+
+<body style="background-color: #f1d08f;" ng-app="formModule" ng-controller="formController" ng-init="init()">
+	<div class="navbar noselect">
+		<a href="/home">Home</a>
+		<a href="/logout" style="float: right;">Logout</a>
+		<a style="float: right;">{{uid}}</a> 
+	</div><br>
+	<center class="noselect">
+		<p style="text-shadow: 0 2px 0 grey; font-size: 64px; color: #000;"><strong>#{{formid}} - {{formtype}}</strong></p>
+		<p style=" text-shadow: 0 2px 0 grey; font-size: 24px; color: #FBFBFB;"><strong>สำหรับ {{userstatus}}</strong></p><br>
+	</center>
+	
+	<br>
+	<div class="box1" style="box-shadow: 10px 10px rgba(212, 122, 114);">
+			<div class="a">
+				<label>วันที่</label>
+				<input type="text" id = "dates" name = "date" size="10" value="{{date}}" readonly>
+				<br><br>
+			</div>
+			<input type="hidden" id="form" name="form" value="1">
+			<div class="b">
+				<p style="font-size: 21px"><strong>ข้อมูลส่วนตัว</strong></p><br>
+			</div>
+			<div class="c">
+				<label for="fname">ชื่อ</label>
+				<input type="text" id="fname" name = "fname" size="25" value="{{fname}}" readonly>
+				<label for="lname">นามสกุล</label>
+				<input type="text" id="lname" name = "lname" size="25" value="{{lname}}" readonly><br><br>
+			</div>
+			<div class="c">
+				<label for="id">เลขทะเบียน</label>
+				<input type="text" id="id" name = "id" size="10" maxlength="10" value="{{id}}" readonly>
+				<label for="years">ชั้นปีที่</label>
+				<input type="text" id="years" name = "years" size="2" maxlength="1" value="{{years}}" readonly>
+				<label for="field">สาขาวิชา</label>
+				<input type="text" id="field" name = "field" size="23" value="{{field}}" readonly><br><br><br>
+			</div>
+			<div class="b">
+				<p style="font-size: 21px"><strong>ที่อยู่ที่สามารถติดต่อได้</strong></p><br>
+			</div>
+			<div class="c">
+				<label for="addhouseno">บ้านเลขที่</label>
+				<input type="text" id="addhouseno" name = "addhouseno" size="6" value="{{addhouseno}}" readonly>
+				<label for="addvillageno">หมู่ที่</label>
+				<input type="text" id="addvillageno" name = "addvillageno" size="2" value="{{addvillageno}}" readonly>
+				<label for="addsubdistrict">ตำบล</label>
+				<input type="text" id="addsubdistrict" name = "addsubdistrict" size="10" value="{{addsubdistrict}}" readonly>
+				<label for="adddistrict">อำเภอ</label>
+				<input type="text" id="adddistrict" name = "adddistrict" size="13" value="{{adddistrict}}" readonly><br><br>
+			</div>
+			<div class="c">
+				<label for="addprovince">จังหวัด</label>
+				<input type="text" id="addprovince" name = "addprovince" size="14" value="{{addprovince}}" readonly>
+				<label for="addpostalcode">รหัสไปรษณีย์</label>
+				<input type="text" id="addpostalcode" name = "addpostalcode" size="4" maxlength="5" value="{{addpostalcode}}" readonly>
+				<label for="phonenumber">โทรศัพท์มือถือ</label>
+				<input type="text" id="phonenumber" name = "phonenumber" size="10" maxlength="10" value="{{phonenumber}}" readonly><br><br>
+			</div>
+			<div class="c">
+				<label for="number">โทรศัพท์บ้าน</label>
+				<input type="text" id="number" name = "number" size="10" maxlength="10" value="{{phone}}" placeholder="(ถ้ามี)" readonly>
+				<label for="teacher">อาจารย์ที่ปรึกษา</label>
+				<input type="text" id="teacher" name = "teacher" size="27" value="{{teacher}}" readonly><br><br><br>
+			</div>
+			<div class="b">
+				<p style="font-size: 21px"><strong>มีความประสงค์ขอ เพิ่ม-ถอนรายวิชา ดังต่อไปนี้</strong></p><br>
+			</div>
+			<div class="b">
+				<label>มีความประสงค์ขอเพิ่ม </label>
+				<input type="text" class="displaycount" style="text-align: center;" id="countaddsubject" name="countaddsubject" size="1" value="{{addc}}" readonly>
+				<label>วิชา</label>
+				<br>
+			</div>
+			<div class="box2">
+				<table  id="addsubject" style="width:100%">
+					<tr>
+						<th style="width:10%">รหัสวิชา</th> 
+						<th style="width:24%">ชื่อวิชา</th>
+						<th style="width:10%">Section</th>
+						<th style="width:17%">วัน/เวลา</th>
+						<th style="width:3%">หน่วยกิต</th>
+						<th style="width:29%">ชื่อผู้สอน</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode1}}</th> 
+						<td>{{addsubjectName1}}</th>
+						<td>{{addsubjectSection1}}</th>
+						<td>{{addsubjectDate1}}</th>
+						<td>{{addsubjectCredit1}}</th>
+						<td>{{addsubjectTeacher1}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode2}}</th> 
+						<td>{{addsubjectName2}}</th>
+						<td>{{addsubjectSection2}}</th>
+						<td>{{addsubjectDate2}}</th>
+						<td>{{addsubjectCredit2}}</th>
+						<td>{{addsubjectTeacher2}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode3}}</th> 
+						<td>{{addsubjectName3}}</th>
+						<td>{{addsubjectSection3}}</th>
+						<td>{{addsubjectDate3}}</th>
+						<td>{{addsubjectCredit3}}</th>
+						<td>{{addsubjectTeacher3}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode4}}</th> 
+						<td>{{addsubjectName4}}</th>
+						<td>{{addsubjectSection4}}</th>
+						<td>{{addsubjectDate4}}</th>
+						<td>{{addsubjectCredit4}}</th>
+						<td>{{addsubjectTeacher4}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode5}}</th> 
+						<td>{{addsubjectName5}}</th>
+						<td>{{addsubjectSection5}}</th>
+						<td>{{addsubjectDate5}}</th>
+						<td>{{addsubjectCredit5}}</th>
+						<td>{{addsubjectTeacher5}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode6}}</th> 
+						<td>{{addsubjectName6}}</th>
+						<td>{{addsubjectSection6}}</th>
+						<td>{{addsubjectDate6}}</th>
+						<td>{{addsubjectCredit6}}</th>
+						<td>{{addsubjectTeacher6}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode7}}</th> 
+						<td>{{addsubjectName7}}</th>
+						<td>{{addsubjectSection7}}</th>
+						<td>{{addsubjectDate7}}</th>
+						<td>{{addsubjectCredit7}}</th>
+						<td>{{addsubjectTeacher7}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode8}}</th> 
+						<td>{{addsubjectName8}}</th>
+						<td>{{addsubjectSection8}}</th>
+						<td>{{addsubjectDate8}}</th>
+						<td>{{addsubjectCredit8}}</th>
+						<td>{{addsubjectTeacher8}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode9}}</th> 
+						<td>{{addsubjectName9}}</th>
+						<td>{{addsubjectSection9}}</th>
+						<td>{{addsubjectDate9}}</th>
+						<td>{{addsubjectCredit9}}</th>
+						<td>{{addsubjectTeacher9}}</th>
+					</tr>
+					<tr style="color: green;">
+						<td>{{addsubjectCode10}}</th> 
+						<td>{{addsubjectName10}}</th>
+						<td>{{addsubjectSection10}}</th>
+						<td>{{addsubjectDate10}}</th>
+						<td>{{addsubjectCredit10}}</th>
+						<td>{{addsubjectTeacher10}}</th>
+					</tr>
+				</table>
+			</div>
+			<hr style="width:70%"; margin="auto";>
+			<div class="b">
+				<label>มีความประสงค์ขอถอน </label>
+				<input type="text" class="displaycount" style="text-align: center;" id="countdelsubject" name="countdelsubject" size="1" value="{{remc}}" readonly>
+				<label>วิชา </label>
+				<br>
+			</div>
+			<div class="box2">
+				<table  id="delsubject" style="width:100%">
+					<tr>
+						<th style="width:10%">รหัสวิชา</th> 
+						<th style="width:24%">ชื่อวิชา</th>
+						<th style="width:10%">Section</th>
+						<th style="width:17%">วัน/เวลา</th>
+						<th style="width:3%">หน่วยกิต</th>
+						<th style="width:29%">ชื่อผู้สอน</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode1}}</th> 
+						<td>{{remsubjectName1}}</th>
+						<td>{{remsubjectSection1}}</th>
+						<td>{{remsubjectDate1}}</th>
+						<td>{{remsubjectCredit1}}</th>
+						<td>{{remsubjectTeacher1}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode2}}</th> 
+						<td>{{remsubjectName2}}</th>
+						<td>{{remsubjectSection2}}</th>
+						<td>{{remsubjectDate2}}</th>
+						<td>{{remsubjectCredit2}}</th>
+						<td>{{remsubjectTeacher2}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode3}}</th> 
+						<td>{{remsubjectName3}}</th>
+						<td>{{remsubjectSection3}}</th>
+						<td>{{remsubjectDate3}}</th>
+						<td>{{remsubjectCredit3}}</th>
+						<td>{{remsubjectTeacher3}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode4}}</th> 
+						<td>{{remsubjectName4}}</th>
+						<td>{{remsubjectSection4}}</th>
+						<td>{{remsubjectDate4}}</th>
+						<td>{{remsubjectCredit4}}</th>
+						<td>{{remsubjectTeacher4}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode5}}</th> 
+						<td>{{remsubjectName5}}</th>
+						<td>{{remsubjectSection5}}</th>
+						<td>{{remsubjectDate5}}</th>
+						<td>{{remsubjectCredit5}}</th>
+						<td>{{remsubjectTeacher5}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode6}}</th> 
+						<td>{{remsubjectName6}}</th>
+						<td>{{remsubjectSection6}}</th>
+						<td>{{remsubjectDate6}}</th>
+						<td>{{remsubjectCredit6}}</th>
+						<td>{{remsubjectTeacher6}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode7}}</th> 
+						<td>{{remsubjectName7}}</th>
+						<td>{{remsubjectSection7}}</th>
+						<td>{{remsubjectDate7}}</th>
+						<td>{{remsubjectCredit7}}</th>
+						<td>{{remsubjectTeacher7}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode8}}</th> 
+						<td>{{remsubjectName8}}</th>
+						<td>{{remsubjectSection8}}</th>
+						<td>{{remsubjectDate8}}</th>
+						<td>{{remsubjectCredit8}}</th>
+						<td>{{remsubjectTeacher8}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode9}}</th> 
+						<td>{{remsubjectName9}}</th>
+						<td>{{remsubjectSection9}}</th>
+						<td>{{remsubjectDate9}}</th>
+						<td>{{remsubjectCredit9}}</th>
+						<td>{{remsubjectTeacher9}}</th>
+					</tr>
+					<tr style="color: red;">
+						<td>{{remsubjectCode10}}</th> 
+						<td>{{remsubjectName10}}</th>
+						<td>{{remsubjectSection10}}</th>
+						<td>{{remsubjectDate10}}</th>
+						<td>{{remsubjectCredit10}}</th>
+						<td>{{remsubjectTeacher10}}</th>
+					</tr>
+				</table>
+			</div>
+			<br><br>
+			<div class="b">
+				<label for="reason" style="font-size: 21px"><strong>เหตุผลที่ขอเพิ่ม-ถอน :</strong></label><br><br>
+			</div>
+			<textarea id="reason" name="reason" rows="4" cols="95" class="center" readonly>{{reason}}</textarea><br><br>
+			<button class="agree noselect" id="submitButton" ng-click="approve()">อนุมัติ</button>
+			<br>
+			<button class="reject noselect" id="submitButton" ng-click="reject()">ปฏิเสธ</button>
+	</div>
+	<br><br>
+</body>
+<script src="/js/approve1.js" type="text/javascript"></script>
+</html>

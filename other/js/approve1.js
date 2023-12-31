@@ -1,0 +1,262 @@
+angular.module("formModule", [])
+.controller("formController", function ($scope, $http, $location, $window) {
+	$scope.approve = function () {
+		var path = window.location.pathname.replace("/approve1/","");
+		path = '/apv/'+path;
+		$http({
+			url: "http://localhost:3001"+path,
+			method: "GET",
+		}).then(function (response) {
+			var url = "http://" + $window.location.host + "/home";
+        	$window.location.href = url;
+		});
+	}
+	$scope.reject = function () {
+		var path = window.location.pathname.replace("/approve1/","");
+		path = '/rej/'+path;
+		$http({
+			url: "http://localhost:3001"+path,
+			method: "GET",
+		}).then(function (response) {
+			var url = "http://" + $window.location.host + "/home";
+        	$window.location.href = url;
+		});
+	}
+	$scope.init = function () {
+		var path = window.location.pathname+'/show';
+		$http({
+			url: "http://localhost:3001"+path,
+			method: "GET",
+		}).then(function (response) {
+			$http({
+				url: "http://localhost:3001/getid",
+				method: "GET",
+			}).then(function (response) {
+				$scope.uid = response.data.userName;
+				if(response.data.accStatus == '2'){
+					$scope.userstatus = 'เจ้าหน้าที่มหาวิทยาลัย';
+				}else if (response.data.accStatus == '3'){
+					$scope.userstatus = 'อาจารย์ที่ปรึกษา';
+				}else if (response.data.accStatus == '4'){
+					$scope.userstatus = 'คณบดี';
+				}
+			});
+			data = response.data;
+			if(data.formtype == '1'){
+				$scope.formtype = 'คำร้องเพิ่มถอนล่าช้า';
+			}else if (data.formtype == '2'){
+				$scope.formtype = 'คำร้องถอน W';
+			}else if (data.formtype == '3'){
+				$scope.formtype = 'คำร้องลาออก';
+			}else if (data.formtype == '4'){
+				$scope.formtype = 'คำร้องอื่น ๆ';
+			}
+			$scope.formid = data.formid;
+			$scope.date = data.date;
+			$scope.id = data.id;
+			$scope.fname = data.fname;
+			$scope.lname = data.lname;
+			$scope.years = data.years;
+			$scope.field = data.field;
+			$scope.addhouseno = data.addhouseno;
+			$scope.addvillageno = data.addvillageno;
+			$scope.addsubdistrict = data.addsubdistrict;
+			$scope.adddistrict = data.adddistrict;
+			$scope.addprovince = data.addprovince;
+			$scope.addpostalcode = data.addpostalcode;
+			$scope.phonenumber = data.phonenumber;
+			$scope.number = data.number;
+			$scope.teacher = data.teacher;
+			if(data.addsub.length > 2){
+				addsubject = JSON.parse(data.addsub);
+				console.log(addsubject.length)
+				$scope.addc = addsubject.length;
+				$scope.addsubjectCode1= addsubject[0].subjectCode;
+				$scope.addsubjectName1= addsubject[0].subjectName;
+				$scope.addsubjectSection1= addsubject[0].subjectSection;
+				$scope.addsubjectDate1= addsubject[0].subjectDate;
+				$scope.addsubjectCredit1= addsubject[0].subjectCredit;
+				$scope.addsubjectTeacher1= addsubject[0].subjectTeacher;
+
+				if(addsubject.length > 1){
+					$scope.addsubjectCode2= addsubject[1].subjectCode;
+					$scope.addsubjectName2= addsubject[1].subjectName;
+					$scope.addsubjectSection2= addsubject[1].subjectSection;
+					$scope.addsubjectDate2= addsubject[1].subjectDate;
+					$scope.addsubjectCredit2= addsubject[1].subjectCredit;
+					$scope.addsubjectTeacher2= addsubject[1].subjectTeacher;
+				}
+
+				if(addsubject.length > 2){
+					$scope.addsubjectCode3= addsubject[2].subjectCode;
+					$scope.addsubjectName3= addsubject[2].subjectName;
+					$scope.addsubjectSection3= addsubject[2].subjectSection;
+					$scope.addsubjectDate3= addsubject[2].subjectDate;
+					$scope.addsubjectCredit3= addsubject[2].subjectCredit;
+					$scope.addsubjectTeacher3= addsubject[2].subjectTeacher;
+				}
+
+				if(addsubject.length > 3){
+					$scope.addsubjectCode4= addsubject[3].subjectCode;
+					$scope.addsubjectName4= addsubject[3].subjectName;
+					$scope.addsubjectSection4= addsubject[3].subjectSection;
+					$scope.addsubjectDate4= addsubject[3].subjectDate;
+					$scope.addsubjectCredit4= addsubject[3].subjectCredit;
+					$scope.addsubjectTeacher4= addsubject[3].subjectTeacher;
+				}
+
+				if(addsubject.length > 4){
+					$scope.addsubjectCode5= addsubject[4].subjectCode;
+					$scope.addsubjectName5= addsubject[4].subjectName;
+					$scope.addsubjectSection5= addsubject[4].subjectSection;
+					$scope.addsubjectDate5= addsubject[4].subjectDate;
+					$scope.addsubjectCredit5= addsubject[4].subjectCredit;
+					$scope.addsubjectTeacher5= addsubject[4].subjectTeacher;
+				}
+
+				if(addsubject.length > 5){
+					$scope.addsubjectCode6= addsubject[5].subjectCode;
+					$scope.addsubjectName6= addsubject[5].subjectName;
+					$scope.addsubjectSection6= addsubject[5].subjectSection;
+					$scope.addsubjectDate6= addsubject[5].subjectDate;
+					$scope.addsubjectCredit6= addsubject[5].subjectCredit;
+					$scope.addsubjectTeacher6= addsubject[5].subjectTeacher;
+				}
+
+				if(addsubject.length > 6){
+					$scope.addsubjectCode7= addsubject[6].subjectCode;
+					$scope.addsubjectName7= addsubject[6].subjectName;
+					$scope.addsubjectSection7= addsubject[6].subjectSection;
+					$scope.addsubjectDate7= addsubject[6].subjectDate;
+					$scope.addsubjectCredit7= addsubject[6].subjectCredit;
+					$scope.addsubjectTeacher7= addsubject[6].subjectTeacher;
+				}
+
+				if(addsubject.length > 7){
+					$scope.addsubjectCode8= addsubject[7].subjectCode;
+					$scope.addsubjectName8= addsubject[7].subjectName;
+					$scope.addsubjectSection8= addsubject[7].subjectSection;
+					$scope.addsubjectDate8= addsubject[7].subjectDate;
+					$scope.addsubjectCredit8= addsubject[7].subjectCredit;
+					$scope.addsubjectTeacher8= addsubject[7].subjectTeacher;
+				}
+
+				if(addsubject.length > 8){
+					$scope.addsubjectCode9= addsubject[8].subjectCode;
+					$scope.addsubjectName9= addsubject[8].subjectName;
+					$scope.addsubjectSection9= addsubject[8].subjectSection;
+					$scope.addsubjectDate9= addsubject[8].subjectDate;
+					$scope.addsubjectCredit9= addsubject[8].subjectCredit;
+					$scope.addsubjectTeacher9= addsubject[8].subjectTeacher;
+				}
+
+				if(addsubject.length > 9){
+					$scope.addsubjectCode10= addsubject[9].subjectCode;
+					$scope.addsubjectName10= addsubject[9].subjectName;
+					$scope.addsubjectSection10= addsubject[9].subjectSection;
+					$scope.addsubjectDate10= addsubject[9].subjectDate;
+					$scope.addsubjectCredit10= addsubject[9].subjectCredit;
+					$scope.addsubjectTeacher10= addsubject[9].subjectTeacher;
+				}
+			}else{
+				$scope.addc = 0;
+			}
+			if(data.remsub.length > 2){
+				remsubject = JSON.parse(data.remsub);
+				$scope.remc = remsubject.length;
+				console.log(remsubject[0].subjectTeacher);
+				$scope.remsubjectCode1= remsubject[0].subjectCode;
+				$scope.remsubjectName1= remsubject[0].subjectName;
+				$scope.remsubjectSection1= remsubject[0].subjectSection;
+				$scope.remsubjectDate1= remsubject[0].subjectDate;
+				$scope.remsubjectCredit1= remsubject[0].subjectCredit;
+				$scope.remsubjectTeacher1= remsubject[0].subjectTeacher;
+
+				if(remsubject.length > 1){
+					$scope.remsubjectCode2= remsubject[1].subjectCode;
+					$scope.remsubjectName2= remsubject[1].subjectName;
+					$scope.remsubjectSection2= remsubject[1].subjectSection;
+					$scope.remsubjectDate2= remsubject[1].subjectDate;
+					$scope.remsubjectCredit2= remsubject[1].subjectCredit;
+					$scope.remsubjectTeacher2= remsubject[1].subjectTeacher;
+				}
+
+				if(remsubject.length > 2){
+					$scope.remsubjectCode3= remsubject[2].subjectCode;
+					$scope.remsubjectName3= remsubject[2].subjectName;
+					$scope.remsubjectSection3= remsubject[2].subjectSection;
+					$scope.remsubjectDate3= remsubject[2].subjectDate;
+					$scope.remsubjectCredit3= remsubject[2].subjectCredit;
+					$scope.remsubjectTeacher3= remsubject[2].subjectTeacher;
+				}
+
+				if(remsubject.length > 3){
+					$scope.remsubjectCode4= remsubject[3].subjectCode;
+					$scope.remsubjectName4= remsubject[3].subjectName;
+					$scope.remsubjectSection4= remsubject[3].subjectSection;
+					$scope.remsubjectDate4= remsubject[3].subjectDate;
+					$scope.remsubjectCredit4= remsubject[3].subjectCredit;
+					$scope.remsubjectTeacher4= remsubject[3].subjectTeacher;
+				}
+
+				if(remsubject.length > 4){
+					$scope.remsubjectCode5= remsubject[4].subjectCode;
+					$scope.remsubjectName5= remsubject[4].subjectName;
+					$scope.remsubjectSection5= remsubject[4].subjectSection;
+					$scope.remsubjectDate5= remsubject[4].subjectDate;
+					$scope.remsubjectCredit5= remsubject[4].subjectCredit;
+					$scope.remsubjectTeacher5= remsubject[4].subjectTeacher;
+				}
+
+				if(remsubject.length > 5){
+					$scope.remsubjectCode6= remsubject[5].subjectCode;
+					$scope.remsubjectName6= remsubject[5].subjectName;
+					$scope.remsubjectSection6= remsubject[5].subjectSection;
+					$scope.remsubjectDate6= remsubject[5].subjectDate;
+					$scope.remsubjectCredit6= remsubject[5].subjectCredit;
+					$scope.remsubjectTeacher6= remsubject[5].subjectTeacher;
+				}
+
+				if(remsubject.length > 6){
+					$scope.remsubjectCode7= remsubject[6].subjectCode;
+					$scope.remsubjectName7= remsubject[6].subjectName;
+					$scope.remsubjectSection7= remsubject[6].subjectSection;
+					$scope.remsubjectDate7= remsubject[6].subjectDate;
+					$scope.remsubjectCredit7= remsubject[6].subjectCredit;
+					$scope.remsubjectTeacher7= remsubject[6].subjectTeacher;
+				}
+
+				if(remsubject.length > 7){
+					$scope.remsubjectCode8= remsubject[7].subjectCode;
+					$scope.remsubjectName8= remsubject[7].subjectName;
+					$scope.remsubjectSection8= remsubject[7].subjectSection;
+					$scope.remsubjectDate8= remsubject[7].subjectDate;
+					$scope.remsubjectCredit8= remsubject[7].subjectCredit;
+					$scope.remsubjectTeacher8= remsubject[7].subjectTeacher;
+				}
+
+				if(remsubject.length > 8){
+					$scope.remsubjectCode9= remsubject[8].subjectCode;
+					$scope.remsubjectName9= remsubject[8].subjectName;
+					$scope.remsubjectSection9= remsubject[8].subjectSection;
+					$scope.remsubjectDate9= remsubject[8].subjectDate;
+					$scope.remsubjectCredit9= remsubject[8].subjectCredit;
+					$scope.remsubjectTeacher9= remsubject[8].subjectTeacher;
+				}
+
+				if(remsubject.length > 9){
+					$scope.remsubjectCode10= remsubject[9].subjectCode;
+					$scope.remsubjectName10= remsubject[9].subjectName;
+					$scope.remsubjectSection10= remsubject[9].subjectSection;
+					$scope.remsubjectDate10= remsubject[9].subjectDate;
+					$scope.remsubjectCredit10= remsubject[9].subjectCredit;
+					$scope.remsubjectTeacher10= remsubject[9].subjectTeacher;
+				}
+			}else{
+				$scope.remc = 0;
+			}
+			$scope.reason = data.reason;
+		});
+
+}
+});

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Mitr' rel='stylesheet'>
+    <title>Login - เข้าสู่ระบบ</title>
+    <link rel="icon" type="image/x-icon" href="pictures\Thammasat.ico">
+    <style>
+        form, p { 
+            padding: 0;
+            margin: auto;
+            font-family: 'Mitr';
+            font-size: 5px;
+            color: #000;
+        }
+        div.box1 {
+            border-radius: 25px;
+            margin: auto;
+            margin-left: auto;
+            margin-right: auto;
+            width: 300px;
+            padding: 50px;
+            background-color: #FBFBFB;
+        }
+        input {
+            border-style: solid;
+            border-color: #767676;
+            border-width: 1px;
+            border-radius: 5px;
+            font-family: 'Mitr';
+            font-size: 16px;
+        }
+        label {
+            font-size: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input.submit {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background: #ffd178;
+            color: white;
+            border-style: outset;
+            border-color: #fff;
+            height: 50px;
+            width: 200px;
+            border-radius: 8px;
+            font-family: 'Mitr';
+            font-size: 24px;
+            text-shadow: none;
+
+        }
+        input.submit:hover 
+        {animation: spring 300ms ease-out;}
+        .noselect {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        br {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        @keyframes spring {
+            15% {
+                -webkit-transform-origin: center center;
+                -webkit-transform: scale(1.2, 1.1);
+            }
+            40% {
+                -webkit-transform-origin: center center;
+                -webkit-transform: scale(0.95, 0.95);
+            }
+            75% {
+                -webkit-transform-origin: center center;
+                -webkit-transform: scale(1.05, 1);
+            }
+            100% {
+                -webkit-transform-origin: center center;
+                -webkit-transform: scale(1, 1);
+            }
+        }
+    </style>
+</head>
+<body style="background-color: #f1d08f;" class="noselect">
+    <br></br><br></br><br></br>
+    <center>
+        <p class="noselect" style="font-size: 60px; color: #111;"><strong>เข้าสู่ระบบ</strong></p><br>
+    </center>
+    <div class="box1" style="box-shadow: 10px 10px rgba(212, 122, 114);">
+        <form action="" method="POST">
+            <p class="noselect" style="font-size: 18px;"><strong>Username</strong></p>
+            <p></p><br>
+            <center><input type="text" name="username" required></center>
+            <br>
+            <p class="noselect" style="font-size: 18px;"><strong>Password</strong></p>
+            <p></p><br>
+            <center><input type="password" name="password" required></center>
+            <br>
+            <% if (locals.login_errors) { 
+              login_errors.forEach(function(error_msg){ %>
+                <br><p style="font-size: 18px; text-align: center; color: #a83232"><%= error_msg %></p>
+              <% });
+            } %>
+            <br><br>
+            <input class="submit" type="submit" value="Login">
+          </form>
+      </div>
+  </body>
+  </html>
